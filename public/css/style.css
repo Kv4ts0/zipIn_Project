@@ -1,0 +1,1211 @@
+body{
+    font-family: 'Raleway';
+    background-color: black;
+    color:white;
+    font-size: 12px;
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+header{
+    top:20px;
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    font-size: 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    gap:100px;
+}
+header a{
+    margin-right: 20px;
+}
+.active{
+    color:#76FFA8;
+    font-weight: bold;
+}
+header img{
+    width: 150px;
+}
+.carousel{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -50px;
+    position: relative;
+}
+header nav ul li{
+    position: relative;
+    float: left;
+    list-style: none;
+}
+.openMenu{
+    font-size: 2rem;
+    margin: 20px;
+    display: none;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+}
+.closeMenu{
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
+.carousel .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.img-gradient::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+}
+.carousel .list .item img{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    object-fit: cover;
+}
+.carousel .list .item .content{
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
+}
+.carousel .list .item .content .title,
+.carousel .list .item .content .topic{
+    font-weight: bold;
+    font-size: 5em;
+    line-height: 1.3em;
+}
+.carousel .list .item .content .topic{
+    color: #76FFA8;
+}
+
+.carousel .list .item .content .buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+
+}
+.carousel .list .item .content button{
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    font-family: 'Raleway';
+    font-weight: 500;
+}
+.carousel .list .item .content button:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+    border: 1px solid #eee;
+}
+.thumbnail{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+.thumbnail .item{
+    width: 100px;
+    height: 180px;
+    flex-shrink: 0;
+    position: relative;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumbnail .item .content{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+.thumbnail .item .content .title{
+    font-weight: bold;
+}
+.arrows{
+    
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1140px;
+    max-width: 80%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 100;
+}
+.arrows button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    font-family: 'Raleway';
+    color: #fff;
+    font-weight: bold;
+    font-size: large;
+    transition: .5s;
+    z-index: 100;
+}
+.carousel .list .item .content .desc{
+    font-size: 1.2rem;
+}
+.arrows button:hover{
+    background-color: #eee;
+    color: #555;
+}
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+.carousel .list .item:nth-child(1) .title,
+.carousel .list .item:nth-child(1) .topic,
+.carousel .list .item:nth-child(1) .desc,
+.carousel .list .item:nth-child(1) .buttons{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+@keyframes showContent {
+    to{
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }   
+}
+.carousel .list .item:nth-child(1) .title{
+    animation-delay: 1.2s;
+}
+.carousel .list .item:nth-child(1) .topic{
+    animation-delay: 1.4s;
+}
+.carousel .list .item:nth-child(1) .desc{
+    animation-delay: 1.6s;
+}
+.carousel .list .item:nth-child(1) .buttons{
+    animation-delay: 1.8s;
+}
+.carousel.next .list .item:nth-child(1) img{
+    width: 100px;
+    height: 180px;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    border-radius: 20px;
+    animation: showImage 1s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+.carousel.next .thumbnail .item:nth-last-child(1){
+    width: 0;
+    overflow: hidden;
+    animation: showThumbnail 1s linear 1 forwards;
+}
+@keyframes showThumbnail{
+    to{
+        width: 100px;
+    }
+}
+.carousel.next .thumbnail{
+    transform: translateX(100px);
+    animation: transformThumbnail .5s linear 1 forwards;
+}
+@keyframes transformThumbnail{
+    to{
+        transform: translateX(0);
+    }
+}
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+.carousel.prev .list .item:nth-child(2) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outImage 1s linear 1 forwards;
+}
+@keyframes outImage{
+    to{
+        width: 100px;
+        height: 180px;
+        border-radius: 20px;
+        left: 50%;
+        bottom: 50px;
+    }
+}
+.carousel.prev .thumbnail .item:nth-child(1){
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail 0.5s linear 1 forwards;
+}
+.carousel.prev .list .item:nth-child(2) .title,
+.carousel.prev .list .item:nth-child(2) .topic,
+.carousel.prev .list .item:nth-child(2) .desc,
+.carousel.prev .list .item:nth-child(2) .buttons{
+    animation: contentOut 1.5s linear 1 forwards;
+}
+@keyframes contentOut{
+    to{
+        transform: translateY(-100px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+.time{
+    width: 100%;
+    height: px;
+    background-color: #76FFA8;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+.carousel.next .time,
+.carousel.prev .time{
+    width: 100%;
+    animation: timeRunning 2s linear 1 forwards;
+}
+@keyframes timeRunning{
+    to{
+        width: 0;
+    }
+}
+
+.map{
+    flex-direction: column;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/mapcover.jpg');
+    width: 100%;
+    z-index: 100;
+    background-size: cover;
+    color: white;
+}
+.projects{
+    flex-direction: column;
+    padding-bottom: 5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/projects.jpg');
+    width: 100%;
+    z-index: 100;
+    background-size: cover;
+    color: white;
+}
+.tourTable{
+    flex-direction: column;
+    padding-bottom: 5rem;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    position: relative;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/projects.jpg');
+    width: 100%;
+    z-index: 100;
+    background-size: cover;
+    color: white;
+}
+.projects h1{
+    margin: 8rem 0;
+}
+.projects div{
+    display: flex;
+}
+.upcomingC{
+    padding: 20px;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    justify-content: flex-start;
+}
+.upcomingC div{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    gap: 10px;
+}
+.upcomingC p{
+    font-size: 1rem;
+}
+.upcomingC div img{
+    margin: 0;
+    width: 150px;
+    height: 100px;
+    border: 2px solid white;
+}
+.projects img{
+    margin-left: 50px;
+    width: 500px;   
+    height: 300px;
+    border: 5px solid white;
+}
+.progressBar{
+    position: relative;
+    padding-top: 5rem;
+    align-items: center;
+    gap: 10rem;
+    justify-content: center;
+    display: flex;
+    width: 1200px;
+}
+.progressBar .step{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(197, 197, 197);
+    border: 3px solid #76FFA8;
+}
+.progressBar hr{
+    z-index: -1;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+}
+.progressBar .step p{
+    font-weight: 600;
+    font-size: 1rem;
+    position: absolute;
+    color: black;
+}
+.progressBar .step h4{
+    color: white;
+    margin-top: 8rem;
+    font-size: 1rem;
+    position: absolute;
+}
+.completedP{
+    position: relative;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.tours{
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 900px;
+    gap: 20px;
+}
+.tours .cardT{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border: 2px solid white;
+}
+.tours .cardT div{
+    opacity: 70%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    width: 300px;
+    position: absolute;
+}
+.completedP .cardp{
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border: 2px solid white;
+}
+
+.completedP .cardp div{
+    opacity: 70%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    width: 300px;
+    position: absolute;
+}
+.completedP .cardp div:hover, .tours .cardT div:hover{
+    cursor: pointer;
+    opacity: 100%;
+    color: #76FFA8;
+    font-weight: 900;
+}
+.completedP .cardp img, .tours .cardT img{
+    margin:0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.filter{
+    position: relative;
+    margin: 3rem 0;
+    display: flex;
+    width: 1000px;
+    gap: 30px;
+}
+.filter input, .filter button{
+    font-family: 'Raleway';
+    width: 150px;
+    border: none;
+    padding: 3px 16px;
+    color: white;
+    border-radius: 80px;
+    background-color: #555;
+    height: 30px;
+}
+.filter button:hover{
+    background-color: #76FFA8;
+    color: black;
+}
+.filter button{
+    height: 40px;
+}
+.filter input::placeholder{
+    color: white;
+}
+select{
+    font-family: 'Raleway';
+    border: none;
+    padding: 3px 16px;
+    color: white;
+    border-radius: 80px;
+    background-color: #555;
+}
+.filter input:focus, 
+select:focus{
+    outline: none;
+}
+
+.blogSection{
+    color: white;
+    flex-direction: column;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+    gap: 50px;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/blog.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    z-index: 100;
+}
+.blogSection div{
+    text-align: center;
+}
+.map h1, section h1{
+    font-size: 2rem;
+}
+.map hr, section hr{
+    width: 10rem;
+}
+.map i{
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.map i:hover{
+    color:#76FFA8;
+}
+.map .batumi{
+    margin-top: 16rem;
+    margin-right: 23rem;
+}
+.map .martvili{
+    margin-top: 4rem;
+    margin-right: 14rem;
+}
+.map .tbilisi{
+    margin-top: 16rem;
+    margin-left: 28rem;
+}
+section{
+    color: black;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+.partners{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 150px;
+    justify-content: center;
+}
+.stat{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: flex;
+    gap: 150px;
+    justify-content: center;
+    align-items: center;
+}
+.statCard{
+    text-align: center;
+}
+.statCard h2{
+    font-size: 2rem;
+}
+.statCard p{
+    font-size: 1.2rem;
+}
+.statCard i{
+    font-size: 3rem;
+}
+.partners div{
+    width: 150px;
+    height: 120px;
+}
+.partners img{
+    width: 100%;
+    height: 100%;
+}
+.blog{
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    position: relative;
+}
+.blog img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.blog .mainC, .blog .blogFlex{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+.blog .blogFlex{
+    display: flex;
+    gap: 30px;
+}
+.blog .mainC{
+    background-color: black;
+    border: 3px solid white;
+}
+.blog .blogFlex > div{
+    width: 400px;
+    border: 3px solid white;
+}
+.imgGrad{
+    width: 375px; height: 293px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+}
+.mainC h1{
+    background-color: white;
+    color: black;
+    padding: 7px;
+    margin-top: 8rem;
+    font-size: 1.4rem;
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+}
+.mainC p{
+    background-color: white;
+    color: black;
+    padding: 7px;
+    margin-top: 12rem;
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1rem;
+    position: absolute;
+}
+.blogFlex h1{
+    background-color: white;
+    padding: 7px;
+    color: black;
+    margin-top: 8rem;
+    font-size: 1.4rem;
+    max-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+}
+.blogFlex p{
+    background-color: white;
+    color: black;
+    padding: 7px;
+    margin-top: 12rem;
+    max-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1rem;
+    position: absolute;
+}
+footer{
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    z-index: 111;
+    position: absolute;
+    background-color: #1F1F1F;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+footer p{
+    font-size: 0.9rem;
+    font-style: italic;
+}
+footer div{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+footer ul li{
+    list-style: none;
+    margin: 1rem 0;
+}
+footer ul li a{
+    font-weight: lighter;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+footer ul li a:hover{
+    color:#76FFA8;
+}
+.contact{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/contact.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    object-fit: cover;
+}
+.contact .contactCard{
+    display: flex;
+}
+.contact .contactCard .form{
+    gap: 20px;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/git.jpg');
+    object-fit: cover;
+    background-size: cover;
+}
+.contact .contactCard .formCard{
+    font-size: 1rem;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(39, 39, 39);
+}
+.formCard ul li{
+    list-style: none;
+}
+.contact .contactCard .form input{
+    padding-left: 20px;
+    font-family: 'Raleway';
+    border: none;
+    color: white;
+    border-radius: 80px;
+    background-color: #8a8a8a;
+    width: 310px;
+    height: 40px;
+}
+.contact .contactCard .form input:focus, .contact .contactCard .form textarea:focus{
+    outline: none;
+}
+.contact .contactCard .form button{
+    width: 310px;
+    height: 40px;
+    font-size: 1rem;
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+}
+.contact .contactCard .form button:hover{
+    background-color: #76FFA8;
+    color: black;
+    font-weight: 600;
+}
+.contact .contactCard .form textarea{
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Raleway';
+    border-radius: 10px;
+    background-color: #8a8a8a;
+    width: 290px;
+    height: 120px;
+}
+.contact .contactCard .form input::placeholder, .contact .contactCard .form textarea::placeholder{
+    color: white;
+}
+@media screen and (max-width: 1200px){
+    .progressBar{
+        width: 820px;
+        gap: 6rem;
+    }
+    .blog{
+        width: 750px;
+    }
+    .mainC p{
+        margin-top: 6rem;
+    }
+    .blog .mainC{
+        height: 200px;
+    }
+    .blog .blogFlex{
+        height: 200px;
+    }
+    .mainC h1{
+        margin-top: 3rem;
+    }
+    .blogFlex p{
+        margin-top: 6rem;
+        max-width: 150px;
+    }
+    .blogFlex h1 {
+        margin-top: 3rem;
+        max-width: 145px;
+    }
+    .stat{
+        gap: 100px;
+    }
+    .partners{
+        gap: 100px;
+    }
+}
+@media screen and (max-width: 1000px){
+    .projects img{
+        width: 390px;
+    }
+    .filter{
+        width: 100%;
+        justify-content: center;
+    }
+    .filter input{
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 980px){
+    .completedP .cardp, .completedP .cardp div {
+        width: 240px;
+    }        
+    .firstCard{
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+    .firstCard img{
+        margin-left: 20px;
+    }
+    .openMenu{
+        position: absolute;
+        float: right;
+        color: white;
+        display: inline-block;
+    }
+    header img{
+        position: absolute;
+        right: 0;
+    }
+    .map img{
+        width: 40rem;
+    }
+    .map .batumi {
+        margin-top: 12rem;
+        margin-right: 14rem;
+    }
+    .map .martvili {
+        margin-top: 4rem;
+        margin-right: 7rem;
+    }
+    .map .sairme {
+        margin-top: 2rem;
+    }
+    .map .tbilisi {
+        margin-top: 13rem;
+        margin-left: 16rem;
+    }
+    .mainMenu{
+        height: 23rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 10;
+        padding-top: 2rem;
+        gap: 2rem;
+        flex-direction: column;
+        background-color: #000000;
+        transform: top 1s ease;
+        display: none;
+    }
+    .closeMenu{
+        display: block;
+        top: 20px;
+        right: 20px;
+    }
+    .tours .cardT{
+        width: 260px;
+    }
+    .tours .cardT div{
+        width: 260px;
+    }
+    .tours{
+        gap: 6px;
+        width: 820px;
+    }
+    .filter{
+        gap: 10px;
+    }
+}
+@media screen and (max-width: 820px){
+    .tours .cardT{
+        width: 200px;
+        height: 170px;
+    }
+    .progressBar{
+        width: 580px;
+        gap: 3rem;
+    }
+    .tours .cardT div{
+        width: 200px;
+    }
+    .tours{
+        width: 640px;
+    }
+}
+@media screen and (max-width: 760px){
+    .filter{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .filter input{
+        width: 300px;
+    }
+    .filter button{
+        width: 330px;
+    }
+    .filter select{
+        width: 330px;
+        height: 35px;
+    }
+    .completedP{
+        flex-direction: column;
+    }
+    .completedP .cardp{
+        width: 400px;
+        height: 310px;
+    }
+    .completedP .cardp div{
+        width: 400px;
+    }
+    .blog {
+        width: 550px;
+    }
+    .blog .blogFlex {
+        height: 170px;
+    }
+    .mainC p{
+        max-width: 280px;
+    }
+    .blogFlex h1 {
+        max-width: 80px;
+    }
+    .blogFlex p {
+        max-width: 80px;
+    }
+}
+@media screen and (max-width: 678px){
+    .partners div {
+        width: 112px;
+        height: 90px;
+    }
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 640px){
+    .tours{
+        grid-template-columns: repeat(2, 1fr);
+        width: 410px;
+    }
+    .map i{
+        font-size: 20px;
+    }
+    .map img {
+        margin-top: 1rem;
+        width: 30rem;
+    }
+    .map .batumi {
+        margin-top: 13rem;
+        margin-right: 10rem;
+    }
+    .map .martvili {
+        margin-top: 6rem;
+        margin-right: 7rem;
+    }
+    .map .sairme {
+        margin-top: 4rem;
+    }
+    .map .tbilisi {
+        margin-top: 13rem;
+        margin-left: 13rem;
+    }
+    .partners{
+        gap: 60px;
+    }
+    .stat{
+        gap: 70px;
+    }
+    footer div ul{
+        padding: 0;
+        margin: 0;
+    }
+    
+}
+@media screen and (max-width: 580px){
+    .progressBar {
+        width: 400px;
+        gap: 3rem;
+    }
+    .progressBar .step {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 565px){
+    .mainC h1{
+        max-width: 190px;
+    }
+    footer div{
+        text-align: center;
+        flex-direction: column;
+    }
+    .blog .blogFlex h1{
+        max-width: 190px;
+    }
+    .blog .blogFlex p{
+        max-width: 280px;
+    }
+    .blog{
+        width: 350px;
+        align-items: center;
+        justify-content: center;
+    }
+    .stat, .partners{
+        display: flex;
+        flex-direction: column;
+    }
+    .blog .blogFlex{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 700px;
+    }
+    .blog .mainC{
+        width: 300px;
+    }
+    .blog .blogFlex > div {
+        height: 200px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 478px){
+    .completedP .cardp {
+        width: 280px;
+        height: 240px;
+    }
+    .completedP .cardp div{
+        width: 280px;
+    }
+    .firstCard{
+        justify-content: center;
+        align-items: center;
+    }
+    .firstCard img{
+        margin: 0;
+    }
+    .upcomingC div img {
+        width: 120px;
+    }
+    .upcomingC{
+        width: 330px;
+    }
+    .upcomingC div{
+        width: 330px;
+    }
+    .map img{
+        width: 20rem;
+    }
+    .map .batumi {
+        margin-top: 10rem;
+        margin-right: 7rem;
+    }
+    .map .martvili {
+        margin-top: 5rem;
+        margin-right: 5rem;
+    }
+    .map .sairme {
+        margin-top: 5rem;
+    }
+    .map .tbilisi {
+        margin-top: 10rem;
+        margin-left: 10rem;
+    }
+    section h1, .map h1{
+        font-size: 1.5rem;
+    }
+    .carousel .list .item .content .topic{
+        font-size: 3em;
+        line-height: 1.3em;
+    }
+    .carousel .list .item .content .desc{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 430px){
+    .projects img {
+        width: 290px;
+        height: 250px;
+    }
+    .upcomingC {
+        width: 250px;
+    }
+    .upcomingC div {
+        flex-direction: column;
+        width: 250px;
+    }
+    .upcomingC div img {
+        width: 100%;
+        height: 100%;
+    }
+    .tours{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        width: 300px;
+        gap: 2rem;
+    }
+    
+    .tours .cardT{
+        width: 300px;
+    }
+    .tours .cardT img{
+        object-fit: cover;
+    }
+    .tours .cardT div{
+        width: 300px;
+    }
+}
+@media screen and (max-width: 400px){
+    .progressBar{
+        flex-direction: column;
+        gap: 70px;
+        width: 100%;
+    }
+    .progressBar hr{
+        display: none;
+    }
+}
+@media screen and (max-width: 350px){
+    .filter input{
+        width: 250px;
+    }
+    .filter button, .filter select{
+        width: 280px;
+    }
+    .blog{
+        width: 290px;
+    }
+}
