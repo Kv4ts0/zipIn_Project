@@ -22,4 +22,5 @@ Route::get('/ziplines', "App\Http\Controllers\zipController@getZipPage");
 Route::get('/contact', "App\Http\Controllers\zipController@getContactPage");
 
 Route::get('/zip/create', "App\Http\Controllers\zipController@createZip");
-Route::get('/zip/all', "App\Http\Controllers\zipController@viewAllZip");
+Route::get('/zip/all', "App\Http\Controllers\zipController@viewAllZip")->name('zips.all');;
+Route::post('/zip/add', "App\Http\Controllers\zipController@addNewZip");

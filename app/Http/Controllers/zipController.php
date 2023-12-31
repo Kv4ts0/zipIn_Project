@@ -39,8 +39,32 @@ class zipController extends Controller
         return $zip;
     }
     public function viewAllZip(){
-        $zip = Zip::all();
-        return $zip;
+        $zips = Zip::all();
         return view('all-zip')->with('zips', $zips);
+    }
+    public function addNewZip(Request $request){
+        $zip = new Zip();
+        $zip->name = $request->name;
+        $zip->location = $request->location;
+        $size1 = $request->file('image1')->getSize();
+        $name1 = $request->file('image1')->getClientOriginalName();
+        $request->file('image1')->storeAs('public/zip', $name1);
+        $zip->image1 = $name1;
+        $size2 = $request->file('image2')->getSize();
+        $name2 = $request->file('image2')->getClientOriginalName();
+        $request->file('image2')->storeAs('public/zip', $name2);
+        $zip->image2 = $name2;
+        $size3 = $request->file('image3')->getSize();
+        $name3 = $request->file('image3')->getClientOriginalName();
+        $request->file('image3')->storeAs('public/zip', $name3);
+        $zip->image3 = $name3;
+        $size4 = $request->file('image4')->getSize();
+        $name4 = $request->file('image4')->getClientOriginalName();
+        $request->file('image4')->storeAs('public/zip', $name4);
+        $zip->image4 = $name4;
+        $zip->price = $request->price;
+        $zip->description = $request->description;
+        $zip->save();
+        return redirect()->route('zips.all');
     }
 }
