@@ -67,4 +67,9 @@ class zipController extends Controller
         $zip->save();
         return redirect()->route('zips.all');
     }
+    public function deleteZip(Request $request){
+        Zip::where('id', $request->zip_id)->delete();
+
+        return redirect()->route('zips.all');
+    }
 }
