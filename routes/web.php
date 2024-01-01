@@ -21,7 +21,8 @@ Route::get('/tokebi', "App\Http\Controllers\zipController@getTokebiPage");
 Route::get('/ziplines', "App\Http\Controllers\zipController@getZipPage");
 Route::get('/contact', "App\Http\Controllers\zipController@getContactPage");
 
-Route::get('/zip/create', "App\Http\Controllers\zipController@createZip");
-Route::get('/zip/all', "App\Http\Controllers\zipController@viewAllZip")->name('zips.all');;
-Route::post('/zip/add', "App\Http\Controllers\zipController@addNewZip");
-Route::post('/zip/delete', "App\Http\Controllers\zipController@deleteZip");
+Route::get('/zip/all', "App\Http\Controllers\zipController@viewAllZip")->name('zips.all');
+Route::post('/zip/add', "App\Http\Controllers\zipController@addNewZip")->name('zips.add');
+Route::post('/zip/delete', "App\Http\Controllers\zipController@deleteZip")->name('zips.delete');
+Route::get('/zip/edit/{id}', "App\Http\Controllers\zipController@editZip")->name('zips.edit');
+Route::post('/zip/update/{id}', "App\Http\Controllers\zipController@updateZip")->name('zips.update');

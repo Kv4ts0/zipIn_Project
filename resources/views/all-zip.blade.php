@@ -13,8 +13,7 @@
             <h2>Ziplines</h2>
         </div>
     </div>
-    <form action="/zip/add" method="POST" enctype="multipart/form-data">
-    @csrf
+
     <table class="table">
         <tr>
             <th>Name</th>
@@ -26,6 +25,8 @@
             <th>Price</th>
             <th>Description</th>
         </tr>
+        <form action="{{ route('zips.add') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <tr>
             <td><input class="form-control" type="text" name="name" placeholder="Zip Name"></td>
             <td><input input class="form-control"  type="text" name="location" placeholder="Zip Location"></td>
@@ -50,11 +51,12 @@
             <td>{{ $zip->price }}</td>
             <td>{{ $zip->description }}</td>
             <td>
-                <form action="/zip/delete" method="POST">
+                <form action="{{ route('zips.delete') }}" method="POST">
                 @csrf
                     <input type="hidden" name="zip_id" value="{{ $zip->id }}">
                     <button class="btn btn-danger">Delete</button>
                 </form>
+                <a href="{{ route('zips.edit',['id' => $zip->id]) }}" class="btn btn-primary">Edit</a>
             </td>
         </tr>
         @endforeach

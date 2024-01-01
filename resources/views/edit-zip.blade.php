@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Edit Zip</title>
+</head>
+<body>
+    <form action="{{ route('zips.update',['id' => $zip->id]) }}" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="zip_id" value="{{ $zip->id }}" />
+    @csrf
+        <div class="card">
+            <div class="card-header">
+                <h3>Edit Zipline</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="{{ $zip->name }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" id="location" value="{{ $zip->location }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="image1">Main Image</label><br>
+                    <td><img width="100px" height="100px" src="/storage/zip/{{$zip->image1}}" alt=""><br><input type="file" name="image1" placeholder="Main Image"></td><hr>
+                </div>
+                <div class="form-group">
+                    <label for="image2">Second Image</label><br>
+                    <td><img width="100px" height="100px" src="/storage/zip/{{$zip->image2}}" alt=""><br><input type="file" name="image2" placeholder="Second Image"></td><hr>
+                </div>
+                <div class="form-group">
+                    <label for="image3">Third Image</label><br>
+                    <td><img width="100px" height="100px" src="/storage/zip/{{$zip->image3}}" alt=""><br><input type="file" name="image3" placeholder="Third Image"></td><hr>
+                </div>
+                <div class="form-group">
+                    <label for="image4">Fourth Image</label><br>
+                    <td><img width="100px" height="100px" src="/storage/zip/{{$zip->image4}}" alt=""><br><input type="file" name="image4" placeholder="Fourth Image"></td><hr>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" name="price" id="price" value="{{ $zip->price }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label><br>
+                    <textarea name="description" id="description" cols="30" style="width: 100%" rows="10">{{ $zip->description }}</textarea>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success">Save</button>
+                    <button class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
