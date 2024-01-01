@@ -25,22 +25,34 @@ class zipController extends Controller
     public function getContactPage(){
         return view('contact');
     }
-    public function createZip(){
-        $zip = new Zip();
-        $zip->name = "ბალდას კანიონი";
-        $zip->location = "მარტვილი";
-        $zip->image1 = "ფოტო1";
-        $zip->image2 = "ფოტო2";
-        $zip->image3 = "ფოტო3";
-        $zip->image4 = "ფოტო4";
-        $zip->price = 60;
-        $zip->description = "ბალდა ეს არის უნიკალური უაღრესი აჰაჰა";
-        $zip->save();
-        return $zip;
+    public function getFilteredZips(Request $request){
+        $zips = Zip::orderBy('created_at', 'DESC');
+        if($request->id != null){
+            $zips->where('id', $request->id);
+        }
+        if($request->name != null){
+            $zips->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if($request->min_price != null){
+            $zips->where('price', '>=', $request->min_price);
+        }
+        if($request->max_price != null){
+            $zips->where('price', '<=', $request->max_price);
+        }
+        if($request->location != null){
+            $zips->where('location', 'LIKE', '%' . $request->location . '%');
+        }
+        return $zips->get();
     }
-    public function viewAllZip(){
-        $zips = Zip::all();
-        return view('all-zip')->with('zips', $zips);
+    public function viewAllZip(Request $request){
+        $zips = $this->getFilteredZips($request);
+        return view('all-zip')->with('zips', $zips)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'location' => $request->location,
+        ]);
     }
     public function editZip(Request $request, $id){
         $zip = Zip::where('id', $id)->first();

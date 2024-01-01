@@ -22,7 +22,21 @@
                 </div>
                 <div class="form-group">
                     <label for="location">Location</label>
-                    <input type="text" class="form-control" name="location" id="location" value="{{ $zip->location }}"/>
+                    <select class="form-control" name="location" id="location">
+                        <option value="" disabled selected hidden>Location</option>
+                        <option value="{{ implode(['location' => 'Tbilisi']) }}">Tbilisi</option>
+                        <option value="{{ implode(['location' => 'Imereti']) }}">Imereti</option>
+                        <option value="{{ implode(['location' => 'Adjaria']) }}">Adjaria</option>
+                        <option value="{{ implode(['location' => 'Kvemo Kartli']) }}">Kvemo Kartli</option>
+                        <option value="{{ implode(['location' => 'Samegrelo / Svaneti']) }}">Samegrelo / Svaneti</option>
+                        <option value="{{ implode(['location' => 'Kakheti']) }}">Kakheti</option>
+                        <option value="{{ implode(['location' => 'Shida Kartli']) }}">Shida Kartli</option>
+                        <option value="{{ implode(['location' => 'Abkhazia']) }}">Abkhazia</option>
+                        <option value="{{ implode(['location' => 'Samtskhe-Javakheti']) }}">Samtskhe-Javakheti</option>
+                        <option value="{{ implode(['location' => 'Guria']) }}">Guria</option>
+                        <option value="{{ implode(['location' => 'Mtskheta-Mtianeti']) }}">Mtskheta-Mtianeti</option>
+                        <option value="{{ implode(['location' => 'Racha-Lechkhumi and Kvemo Svaneti']) }}">Racha-Lechkhumi and Kvemo Svaneti</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="image1">Main Image</label><br>

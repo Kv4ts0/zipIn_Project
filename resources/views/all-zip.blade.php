@@ -15,6 +15,32 @@
     </div>
 
     <table class="table">
+        <form action="{{ route('zips.all') }}">
+        @csrf
+        <tr>
+            <td><input class="form-control" type="text" name="name" placeholder="Zip Name"></td>
+            <td>
+            <select class="form-control" name="location" id="location">
+                <option value="" disabled selected hidden>Location</option>
+                <option value="{{ implode(['location' => 'Tbilisi']) }}">Tbilisi</option>
+                <option value="{{ implode(['location' => 'Imereti']) }}">Imereti</option>
+                <option value="{{ implode(['location' => 'Adjaria']) }}">Adjaria</option>
+                <option value="{{ implode(['location' => 'Kvemo Kartli']) }}">Kvemo Kartli</option>
+                <option value="{{ implode(['location' => 'Samegrelo / Svaneti']) }}">Samegrelo / Svaneti</option>
+                <option value="{{ implode(['location' => 'Kakheti']) }}">Kakheti</option>
+                <option value="{{ implode(['location' => 'Shida Kartli']) }}">Shida Kartli</option>
+                <option value="{{ implode(['location' => 'Abkhazia']) }}">Abkhazia</option>
+                <option value="{{ implode(['location' => 'Samtskhe-Javakheti']) }}">Samtskhe-Javakheti</option>
+                <option value="{{ implode(['location' => 'Guria']) }}">Guria</option>
+                <option value="{{ implode(['location' => 'Mtskheta-Mtianeti']) }}">Mtskheta-Mtianeti</option>
+                <option value="{{ implode(['location' => 'Racha-Lechkhumi and Kvemo Svaneti']) }}">Racha-Lechkhumi and Kvemo Svaneti</option>
+            </select>
+            </td>
+            <td><input input class="form-control"  type="number" name="min_price" placeholder="Min Price"></td>
+            <td><input input class="form-control"  type="number" name="max_price" placeholder="Max Price"></td>
+            <td><button class="btn btn-success" type="submit">Filter</button></td>
+        </tr>
+        </form>
         <tr>
             <th>Name</th>
             <th>Location</th>
@@ -29,7 +55,23 @@
         @csrf
         <tr>
             <td><input class="form-control" type="text" name="name" placeholder="Zip Name"></td>
-            <td><input input class="form-control"  type="text" name="location" placeholder="Zip Location"></td>
+            <td>
+            <select class="form-control" name="location" id="location">
+                <option value="" disabled selected hidden>Location</option>
+                <option value="{{ implode(['location' => 'Tbilisi']) }}">Tbilisi</option>
+                <option value="{{ implode(['location' => 'Imereti']) }}">Imereti</option>
+                <option value="{{ implode(['location' => 'Adjaria']) }}">Adjaria</option>
+                <option value="{{ implode(['location' => 'Kvemo Kartli']) }}">Kvemo Kartli</option>
+                <option value="{{ implode(['location' => 'Samegrelo / Svaneti']) }}">Samegrelo / Svaneti</option>
+                <option value="{{ implode(['location' => 'Kakheti']) }}">Kakheti</option>
+                <option value="{{ implode(['location' => 'Shida Kartli']) }}">Shida Kartli</option>
+                <option value="{{ implode(['location' => 'Abkhazia']) }}">Abkhazia</option>
+                <option value="{{ implode(['location' => 'Samtskhe-Javakheti']) }}">Samtskhe-Javakheti</option>
+                <option value="{{ implode(['location' => 'Guria']) }}">Guria</option>
+                <option value="{{ implode(['location' => 'Mtskheta-Mtianeti']) }}">Mtskheta-Mtianeti</option>
+                <option value="{{ implode(['location' => 'Racha-Lechkhumi and Kvemo Svaneti']) }}">Racha-Lechkhumi and Kvemo Svaneti</option>
+            </select>
+            </td>
             <td><input input class="form-control"  class="form-control" type="file" name="image1" placeholder="Main image"></td>
             <td><input input class="form-control"  class="form-control" type="file" name="image2" placeholder="Second image"></td>
             <td><input input class="form-control"  class="form-control" type="file" name="image3" placeholder="Third image"></td>
