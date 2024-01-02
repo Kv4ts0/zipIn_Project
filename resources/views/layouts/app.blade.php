@@ -56,7 +56,15 @@
                                     <a class="dropdown-item" href="{{ route('zips.all') }}">
                                         Edit Zips
                                     </a>
-                                    
+                                    <a class="dropdown-item" href="{{ route('tours.all') }}">
+                                        Edit Tours
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('tokebi.all') }}">
+                                        Edit Tokebis park
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('blogs.all') }}">
+                                        Edit Blogs
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('auth.custom.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

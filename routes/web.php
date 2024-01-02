@@ -1,5 +1,6 @@
 <?php
 use App\Models\Zip;
+use App\Models\Tour;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,13 +12,38 @@ Route::get('/tokebi', "App\Http\Controllers\zipController@getTokebiPage");
 Route::get('/ziplines', "App\Http\Controllers\zipController@getZipPage");
 Route::get('/contact', "App\Http\Controllers\zipController@getContactPage");
 
+//Zip routes
 Route::middleware('custom-auth')->get('/zip/all', "App\Http\Controllers\zipController@viewAllZip")->name('zips.all');
 Route::middleware('custom-auth')->post('/zip/add', "App\Http\Controllers\zipController@addNewZip")->name('zips.add');
 Route::middleware('custom-auth')->post('/zip/delete', "App\Http\Controllers\zipController@deleteZip")->name('zips.delete');
 Route::middleware('custom-auth')->get('/zip/edit/{id}', "App\Http\Controllers\zipController@editZip")->name('zips.edit');
 Route::middleware('custom-auth')->post('/zip/update/{id}', "App\Http\Controllers\zipController@updateZip")->name('zips.update');
 
+//Tour routes
+Route::middleware('custom-auth')->get('/tour/all', 'App\Http\Controllers\tourController@viewAllTour')->name('tours.all');
+Route::middleware('custom-auth')->post('/tour/add', 'App\Http\Controllers\tourController@addNewTour')->name('tours.add');
+Route::middleware('custom-auth')->post('/tour/delete', 'App\Http\Controllers\tourController@deleteTour')->name('tours.delete');
+Route::middleware('custom-auth')->get('/tour/edit/{id}', 'App\Http\Controllers\tourController@editTour')->name('tours.edit');
+Route::middleware('custom-auth')->post('/tour/update/{id}', 'App\Http\Controllers\tourController@updateTour')->name('tours.update');
+
+//Tokebi routes
+Route::middleware('custom-auth')->get('/tokebi/all', 'App\Http\Controllers\tokebiController@viewAlltokebi')->name('tokebi.all');
+Route::middleware('custom-auth')->post('/tokebi/add', 'App\Http\Controllers\tokebiController@addNewtokebi')->name('tokebi.add');
+Route::middleware('custom-auth')->post('/tokebi/delete', 'App\Http\Controllers\tokebiController@deletetokebi')->name('tokebi.delete');
+Route::middleware('custom-auth')->get('/tokebi/edit/{id}', 'App\Http\Controllers\tokebiController@edittokebi')->name('tokebi.edit');
+Route::middleware('custom-auth')->post('/tokebi/update/{id}', 'App\Http\Controllers\tokebiController@updatetokebi')->name('tokebi.update');
+
+//Blog routes
+Route::middleware('custom-auth')->get('/blog/all', 'App\Http\Controllers\blogController@viewAllBlog')->name('blogs.all');
+Route::middleware('custom-auth')->post('/blog/add', 'App\Http\Controllers\blogController@addNewBlog')->name('blogs.add');
+Route::middleware('custom-auth')->post('/blog/delete', 'App\Http\Controllers\blogController@deleteBlog')->name('blogs.delete');
+Route::middleware('custom-auth')->get('/blog/edit/{id}', 'App\Http\Controllers\blogController@editBlog')->name('blogs.edit');
+Route::middleware('custom-auth')->post('/blog/update/{id}', 'App\Http\Controllers\blogController@updateBlog')->name('blogs.update');
+
+
+
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
