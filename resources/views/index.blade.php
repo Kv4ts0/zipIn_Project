@@ -254,22 +254,22 @@
         <hr>
         <div class="stat">
             <div class="statCard">
-                <i class="fa-solid fa-chart-pie" style="color: #2a7a3e;"></i>
+                <img src="./assets/images/analytics.png" alt="stat image">
                 <h2>15</h2>
                 <p>Projects <br>completed</p>
             </div>
             <div class="statCard">
-                <i class="fa-solid fa-users" style="color: #2a7a3e;"></i>
+                <img src="./assets/images/analytics.png" alt="stat image">
                 <h2>16K</h2>
                 <p>Global <br>Clients</p>
             </div>
             <div class="statCard">
-                <i class="fa-solid fa-user" style="color: #2a7a3e;"></i>
+                <img src="./assets/images/analytics.png" alt="stat image">
                 <h2>26k</h2>
                 <p>Local <br>Clients</p>
             </div>
             <div class="statCard">
-                <i class="fa-solid fa-briefcase" style="color: #2a7a3e;"></i>
+                <img src="./assets/images/analytics.png" alt="stat image">
                 <h2>10</h2>
                 <p>Partners</p>
             </div>

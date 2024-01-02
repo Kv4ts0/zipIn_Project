@@ -612,8 +612,11 @@ section{
 .statCard p{
     font-size: 1.2rem;
 }
-.statCard i{
-    font-size: 3rem;
+.statCard img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
 }
 .partners div{
     width: 150px;
