@@ -29,144 +29,42 @@
             </ul>
         </nav>
     </header>
-    <div class="carousel">
+<!-- Carousel -->
+<div class="carousel">
         <div class="list">
+            @foreach($slides as $slide)
             <div class="item">
                 <div class="img-gradient">
-                    <img src="./assets/images/cimage1.jpg" alt="image1">
+                    <img src="storage/slide/{{$slide->slideimage}}" alt="slideimage">
                 </div>
                 <div class="content">
-                    <div class="title">Slide #1</div>
-                    <div class="topic">Slide Topic #1</div>
+                    <div class="title">{{$slide->title}}</div>
+                    <div class="topic">{{$slide->subtitle}}</div>
                     <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                        {{$slide->description}}
                     </div>
                     <div class="buttons">
-                        <button>Read more...</button>
                         <button>Follow us on Facebook</button>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage2.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #2</div>
-                    <div class="topic">Slide Topic #2</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage3.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #3</div>
-                    <div class="topic">Slide Topic #3</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage4.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #4</div>
-                    <div class="topic">Slide Topic #4</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage5.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #5</div>
-                    <div class="topic">Slide Topic #5</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="thumbnail">
             <div class="item">
                 <img src="./assets/images/cimage2.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #2
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage3.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #3
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage4.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #4
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage5.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #5
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage1.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #1
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
         </div>
         <div class="arrows">

@@ -32,142 +32,39 @@
 <!-- Carousel -->
     <div class="carousel">
         <div class="list">
+            @foreach($slides as $slide)
             <div class="item">
                 <div class="img-gradient">
-                    <img src="./assets/images/cimage1.jpg" alt="image1">
+                    <img src="storage/slide/{{$slide->slideimage}}" alt="slideimage">
                 </div>
                 <div class="content">
-                    <div class="title">Slide #1</div>
-                    <div class="topic">Slide Topic #1</div>
+                    <div class="title">{{$slide->title}}</div>
+                    <div class="topic">{{$slide->subtitle}}</div>
                     <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                        {{$slide->description}}
                     </div>
                     <div class="buttons">
-                        <button>Read more...</button>
                         <button>Follow us on Facebook</button>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage2.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #2</div>
-                    <div class="topic">Slide Topic #2</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage3.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #3</div>
-                    <div class="topic">Slide Topic #3</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage4.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #4</div>
-                    <div class="topic">Slide Topic #4</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="img-gradient">
-                <img src="./assets/images/cimage5.jpg" alt="image1">
-                </div>
-                <div class="content">
-                    <div class="title">Slide #5</div>
-                    <div class="topic">Slide Topic #5</div>
-                    <div class="desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                    </div>
-                    <div class="buttons">
-                        <button>Read more...</button>
-                        <button>Follow us on Facebook</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="thumbnail">
             <div class="item">
                 <img src="./assets/images/cimage2.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #2
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage3.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #3
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage4.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #4
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage5.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #5
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
             <div class="item">
                 <img src="./assets/images/cimage1.jpg" alt="">
-                <div class="content">
-                    <div class="title">
-                        Slide #1
-                    </div>
-                    <div class="desc">
-                        Description
-                    </div>
-                </div>
             </div>
         </div>
         <div class="arrows">
@@ -218,61 +115,41 @@
             <h1>Blog</h1>
             <hr>
         </div>
-
+        @foreach($blogs->take(1) as $blog)
         <div class="blog">
             <div class="mainC">
-                <h1>Flying over the Tbilisi Botanical Garden</h1>
-                <p>Flying over the Botanical Garden in Tbilisi is possible only 
-                    with the help of Zipin Georgia with us 🙏 💯 💪</p>
-                <img src="./assets/images/blog1.jpg" alt="">
-                
+                <h1>{{$blog->name}}</h1>
+                <p>{{$blog->description}}</p>
+                <img src="storage/blog/{{$blog->blogimage}}" alt="">  
             </div>
+        @endforeach
+        
             <div class="blogFlex">
+                @foreach($blogs->take(4)->skip(1) as $blog)
                 <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog2.jpg" alt="">
+                    <h1>{{$blog->name}}</h1>
+                    <p>{{$blog->description}}</p>
+                    <img src="storage/blog/{{$blog->blogimage}}" alt="">
                     
                 </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog3.jpg" alt="">
-                </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog4.jpg" alt="">
-                </div>
+                @endforeach
             </div>
-            
+        
         </div>
+
     </section>
 <!-- Statistics -->
     <section>
         <h1>Statistics</h1>
         <hr>
         <div class="stat">
+            @foreach($stats->take(4) as $stat)
             <div class="statCard">
-                <img src="./assets/images/analytics.png" alt="stat image">
-                <h2>15</h2>
-                <p>Projects <br>completed</p>
+                <img src="storage/stat/{{$stat->statimage}}" alt="stat image">
+                <h2>{{$stat->number}}</h2>
+                <p>{{$stat->name}}</p>
             </div>
-            <div class="statCard">
-                <img src="./assets/images/analytics.png" alt="stat image">
-                <h2>16K</h2>
-                <p>Global <br>Clients</p>
-            </div>
-            <div class="statCard">
-                <img src="./assets/images/analytics.png" alt="stat image">
-                <h2>26k</h2>
-                <p>Local <br>Clients</p>
-            </div>
-            <div class="statCard">
-                <img src="./assets/images/analytics.png" alt="stat image">
-                <h2>10</h2>
-                <p>Partners</p>
-            </div>
+            @endforeach
         </div>
     </section>
 <!-- Footer -->
