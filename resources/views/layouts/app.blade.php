@@ -65,6 +65,12 @@
                                     <a class="dropdown-item" href="{{ route('blogs.all') }}">
                                         Edit Blogs
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('slides.all') }}">
+                                        Edit Slides
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('stats.all') }}">
+                                        Edit Stats
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('auth.custom.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

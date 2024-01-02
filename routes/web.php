@@ -1,6 +1,11 @@
 <?php
 use App\Models\Zip;
 use App\Models\Tour;
+use App\Models\Tokebi;
+use App\Models\Slide;
+use App\Models\Stat;
+use App\Models\Blog;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +44,20 @@ Route::middleware('custom-auth')->post('/blog/add', 'App\Http\Controllers\blogCo
 Route::middleware('custom-auth')->post('/blog/delete', 'App\Http\Controllers\blogController@deleteBlog')->name('blogs.delete');
 Route::middleware('custom-auth')->get('/blog/edit/{id}', 'App\Http\Controllers\blogController@editBlog')->name('blogs.edit');
 Route::middleware('custom-auth')->post('/blog/update/{id}', 'App\Http\Controllers\blogController@updateBlog')->name('blogs.update');
+
+//Slide routes
+Route::middleware('custom-auth')->get('/slide/all', 'App\Http\Controllers\slideController@viewAllSlide')->name('slides.all');
+Route::middleware('custom-auth')->post('/slide/add', 'App\Http\Controllers\slideController@addNewSlide')->name('slides.add');
+Route::middleware('custom-auth')->post('/slide/delete', 'App\Http\Controllers\slideController@deleteSlide')->name('slides.delete');
+Route::middleware('custom-auth')->get('/slide/edit/{id}', 'App\Http\Controllers\slideController@editSlide')->name('slides.edit');
+Route::middleware('custom-auth')->post('/slide/update/{id}', 'App\Http\Controllers\slideController@updateSlide')->name('slides.update');
+
+//Stat routes
+Route::middleware('custom-auth')->get('/stat/all', 'App\Http\Controllers\statController@viewAllStat')->name('stats.all');
+Route::middleware('custom-auth')->post('/stat/add', 'App\Http\Controllers\statController@addNewStat')->name('stats.add');
+Route::middleware('custom-auth')->post('/stat/delete', 'App\Http\Controllers\statController@deleteStat')->name('stats.delete');
+Route::middleware('custom-auth')->get('/stat/edit/{id}', 'App\Http\Controllers\statController@editStat')->name('stats.edit');
+Route::middleware('custom-auth')->post('/stat/update/{id}', 'App\Http\Controllers\statController@updateStat')->name('stats.update');
 
 
 
