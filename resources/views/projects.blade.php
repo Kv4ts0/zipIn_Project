@@ -52,21 +52,11 @@
             @endforeach
         </div>
         <div class="thumbnail">
+        @foreach($slides as $slide)
             <div class="item">
-                <img src="./assets/images/cimage2.jpg" alt="">
+                <img src="storage/slide/{{$slide->slideimage}}" alt="">
             </div>
-            <div class="item">
-                <img src="./assets/images/cimage3.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage4.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage5.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage1.jpg" alt="">
-            </div>
+        @endforeach
         </div>
         <div class="arrows">
             <button id="prev"><</button>
@@ -75,95 +65,84 @@
         <div class="time"></div>
     </div>
     <!-- Project section -->
+    
     <div class="projects">
         <h1>New project remaining...</h1>
+        @foreach($uprojects as $project)
         <div class="firstCard">
             <div class="upcomingC">
-                <h2>Balda - Zipline</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </p>
+                <h2>{{ $project->name }}</h2>
+                <p>{{ $project->description }}</p>
                 <div>
-                    <img src="./assets/images/balda1.jpg" alt="project image">
-                    <img src="./assets/images/balda2.jpg" alt="project image">
-                    <img src="./assets/images/balda3.jpg" alt="project image">
+                    <img src="storage/uproject/{{$project->image2}}" alt="project image">
+                    <img src="storage/uproject/{{$project->image3}}" alt="project image">
+                    <img src="storage/uproject/{{$project->image4}}" alt="project image">
                 </div>
             </div>
-            <img src="./assets/images/baldamain.jpg" alt="project main image">
+            <img src="storage/uproject/{{$project->image1}}" alt="project image">
         </div>
         <div class="progressBar">
             <div class="step 1">
                 <p>1</p>
-                <h4>Planning</h4>
+                <h4>{{$project->step1}}</h4>
             </div>
             <div class="step 2">
                 <p>2</p>
-                <h4>Modeling</h4>
+                <h4>{{$project->step2}}</h4>
             </div>
             <div class="step 3">
                 <p>3</p>
-                <h4>Building</h4>
+                <h4>{{$project->step3}}</h4>
             </div>
             <div class="step 4">
                 <p>4</p>
-                <h4>N/A</h4>
+                <h4>{{$project->step4}}</h4>
             </div>
             <div class="step 5">
                 <p>5</p>
-                <h4>N/A</h4>
+                <h4>{{$project->step5}}</h4>
             </div>
             <hr>
         </div>
+        @endforeach
         <h1>Completed Projects</h1>
         <div class="completedP">
+            @foreach($zips->take(3) as $zip)
             <div class="cardp">
-                <div><p>Project#1</p></div>
-                <img src="./assets/images/zip1.jpg" alt="Completed projects">
+                <div><p>{{$zip->name}}</p></div>
+                <img src="storage/zip/{{$zip->image1}}" alt="Completed projects">
             </div>
-            <div class="cardp">
-                <div><p>Project#2</p></div>
-                <img src="./assets/images/zip2.jpg"  alt="Completed projects">
-            </div>
-            <div class="cardp">
-                <div><p>Project#3</p></div>
-                <img src="./assets/images/zip3.jpg"  alt="Completed projects">
-            </div>
+            @endforeach
         </div>
     </div>
-    <!-- Blog -->
+    <!-- Blogs -->
     <section class="blogSection">
         <div>
             <h1>Blog</h1>
             <hr>
         </div>
-
+        @foreach($blogs->take(1) as $blog)
         <div class="blog">
             <div class="mainC">
-                <h1>Flying over the Tbilisi Botanical Garden</h1>
-                <p>Flying over the Botanical Garden in Tbilisi is possible only 
-                    with the help of Zipin Georgia with us 🙏 💯 💪</p>
-                <img src="./assets/images/blog1.jpg" alt="">
-                
+                <h1>{{$blog->name}}</h1>
+                <p>{{$blog->description}}</p>
+                <img src="storage/blog/{{$blog->blogimage}}" alt="">  
             </div>
+        @endforeach
+        
             <div class="blogFlex">
+                @foreach($blogs->take(4)->skip(1) as $blog)
                 <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog2.jpg" alt="">
+                    <h1>{{$blog->name}}</h1>
+                    <p>{{$blog->description}}</p>
+                    <img src="storage/blog/{{$blog->blogimage}}" alt="">
                     
                 </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog3.jpg" alt="">
-                </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog4.jpg" alt="">
-                </div>
+                @endforeach
             </div>
-            
+        
         </div>
+
     </section>
     <!-- Footer -->
     <footer>

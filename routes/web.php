@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', "App\Http\Controllers\zipController@getHomePage");
 Route::get('/index', "App\Http\Controllers\zipController@getHomePage");
 Route::get('/projects', "App\Http\Controllers\zipController@getProjectsPage");
-Route::get('/tours', "App\Http\Controllers\zipController@getToursPage");
+Route::get('/tours', "App\Http\Controllers\zipController@getToursPage")->name('tourebi.all');
 Route::get('/tokebi', "App\Http\Controllers\zipController@getTokebiPage");
-Route::get('/ziplines', "App\Http\Controllers\zipController@getZipPage");
+Route::get('/ziplines', "App\Http\Controllers\zipController@getZipPage")->name('ziplines.all');
 Route::get('/contact', "App\Http\Controllers\zipController@getContactPage");
 
 //Zip routes
@@ -23,6 +23,13 @@ Route::middleware('custom-auth')->post('/zip/add', "App\Http\Controllers\zipCont
 Route::middleware('custom-auth')->post('/zip/delete', "App\Http\Controllers\zipController@deleteZip")->name('zips.delete');
 Route::middleware('custom-auth')->get('/zip/edit/{id}', "App\Http\Controllers\zipController@editZip")->name('zips.edit');
 Route::middleware('custom-auth')->post('/zip/update/{id}', "App\Http\Controllers\zipController@updateZip")->name('zips.update');
+
+//Upcoming project routes
+Route::middleware('custom-auth')->get('/uproject/all', "App\Http\Controllers\zipController@viewAllUproject")->name('uprojects.all');
+Route::middleware('custom-auth')->post('/uproject/add', "App\Http\Controllers\zipController@addNewUproject")->name('uprojects.add');
+Route::middleware('custom-auth')->post('/uproject/delete', "App\Http\Controllers\zipController@deleteUproject")->name('uprojects.delete');
+Route::middleware('custom-auth')->get('/uproject/edit/{id}', "App\Http\Controllers\zipController@editUproject")->name('uprojects.edit');
+Route::middleware('custom-auth')->post('/uproject/update/{id}', "App\Http\Controllers\zipController@updateUproject")->name('uprojects.update');
 
 //Tour routes
 Route::middleware('custom-auth')->get('/tour/all', 'App\Http\Controllers\zipController@viewAllTour')->name('tours.all');

@@ -51,21 +51,11 @@
             @endforeach
         </div>
         <div class="thumbnail">
+        @foreach($slides as $slide)
             <div class="item">
-                <img src="./assets/images/cimage2.jpg" alt="">
+                <img src="storage/slide/{{$slide->slideimage}}" alt="">
             </div>
-            <div class="item">
-                <img src="./assets/images/cimage3.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage4.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage5.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage1.jpg" alt="">
-            </div>
+        @endforeach
         </div>
         <div class="arrows">
             <button id="prev"><</button>

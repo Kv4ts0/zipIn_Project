@@ -26,6 +26,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Image</th>
             <th>Description</th>
         </tr>
         <form action="{{ route('blogs.add') }}" method="POST" enctype="multipart/form-data">
@@ -33,8 +34,8 @@
         <tr>
             <td>#</td>
             <td><input class="form-control" type="text" name="name" placeholder="Blog Name"></td>
-            <td><input input class="form-control"  class="form-control" type="file" name="blogimage" placeholder="Blog image"></td>
-            <td><input input class="form-control"  type="text" name="description" placeholder="Blog Description"></td>
+            <td><input class="form-control"  class="form-control" type="file" name="blogimage" placeholder="Blog image"></td>
+            <td><textarea class="form-control" name="description"></textarea></td>
             <td><button class="btn btn-success" type="submit">Add</button></td>
             <td>#</td>
         </tr>

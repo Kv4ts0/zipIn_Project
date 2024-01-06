@@ -9,6 +9,7 @@ use App\Models\Stat;
 use App\Models\Tokebi;
 use App\Models\Tour;
 use App\Models\Blog;
+use App\Models\Uproject;
 
 class zipController extends Controller
 {
@@ -293,6 +294,99 @@ class zipController extends Controller
         return redirect()->route('slides.all');
     }
 
+    // Upcoming projects
+    public function getFilteredUprojects(Request $request){
+        $uprojects = Uproject::orderBy('created_at', 'DESC');
+        if($request->id != null){
+            $uprojects->where('id', $request->id);
+        }
+        if($request->name != null){
+            $uprojects->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        return $uprojects->get();
+    }
+    public function viewAllUproject(Request $request){
+        $uprojects = $this->getFilteredUprojects($request);
+        return view('all-uproject')->with('uprojects', $uprojects)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+        ]);
+    }
+    public function editUproject(Request $request, $id){
+        $uproject = Uproject::where('id', $id)->first();
+        return view('edit-uproject')->with('uproject', $uproject);
+    }
+    public function updateUproject(Request $request, $id){
+        $uproject = Uproject::findOrFail($id);
+        $uproject->name = $request->name;
+        if ($request->hasFile('image1')) {
+            $name1 = $request->file('image1')->getClientOriginalName();
+            $request->file('image1')->storeAs('public/uproject', $name1);
+            $uproject->image1 = $name1;
+        }
+        if ($request->hasFile('image2')) {
+            $name2 = $request->file('image2')->getClientOriginalName();
+            $request->file('image2')->storeAs('public/uproject', $name2);
+            $uproject->image2 = $name2;
+        }
+        if ($request->hasFile('image3')) {
+            $name3 = $request->file('image3')->getClientOriginalName();
+            $request->file('image3')->storeAs('public/uproject', $name3);
+            $uproject->image3 = $name3;
+        }
+        if ($request->hasFile('image4')) {
+            $name4 = $request->file('image4')->getClientOriginalName();
+            $request->file('image4')->storeAs('public/uproject', $name4);
+            $uproject->image4 = $name4;
+        }
+        $uproject->step1 = $request->step1;
+        $uproject->step2 = $request->step2;
+        $uproject->step3 = $request->step3;
+        $uproject->step4 = $request->step4;
+        $uproject->step5 = $request->step5;
+
+        $uproject->description = $request->description;
+        $uproject->save();
+        return redirect()->route('uprojects.all');
+    }
+    public function addNewUproject(Request $request){
+        $uproject = new Uproject();
+        $uproject->name = $request->name;
+        $size1 = $request->file('image1')->getSize();
+        $name1 = $request->file('image1')->getClientOriginalName();
+        $request->file('image1')->storeAs('public/uproject', $name1);
+        $uproject->image1 = $name1;
+
+        $size2 = $request->file('image2')->getSize();
+        $name2 = $request->file('image2')->getClientOriginalName();
+        $request->file('image2')->storeAs('public/uproject', $name2);
+        $uproject->image2 = $name2;
+
+        $size3 = $request->file('image3')->getSize();
+        $name3 = $request->file('image3')->getClientOriginalName();
+        $request->file('image3')->storeAs('public/uproject', $name3);
+        $uproject->image3 = $name3;
+
+        $size4 = $request->file('image4')->getSize();
+        $name4 = $request->file('image4')->getClientOriginalName();
+        $request->file('image4')->storeAs('public/uproject', $name4);
+        $uproject->image4 = $name4;
+        $uproject->step1 = $request->step1;
+        $uproject->step2 = $request->step2;
+        $uproject->step3 = $request->step3;
+        $uproject->step4 = $request->step4;
+        $uproject->step5 = $request->step5;
+        $uproject->description = $request->description;
+        $uproject->save();
+        return redirect()->route('uprojects.all');
+    }
+    public function deleteUproject(Request $request){
+        Uproject::where('id', $request->uproject_id)->delete();
+        return redirect()->route('uprojects.all');
+    }
+    //end
+
+
     public function getFilteredBlogs(Request $request){
         $blogs = Blog::orderBy('created_at', 'DESC');
         if($request->id != null){
@@ -358,31 +452,72 @@ class zipController extends Controller
         ]);
     }
     public function getProjectsPage(Request $request){
+        $zips = $this->getFilteredZips($request);
+        $uprojects = $this->getFilteredUprojects($request);
         $slides = $this->getFilteredSlides($request);
+        $blogs = $this->getFilteredBlogs($request);
         return view('projects')->with('slides', $slides)->with('filters', [
             'id' => $request->id,
             'title' => $request->title,
+        ])->with('blogs', $blogs)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+        ])->with('zips', $zips)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'location' => $request->location,
+        ])->with('uprojects', $uprojects)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
         ]);
     }
     public function getToursPage(Request $request){
         $slides = $this->getFilteredSlides($request);
+        $blogs = $this->getFilteredBlogs($request);
+        $tours = $this->getFilteredTours($request);
         return view('tours')->with('slides', $slides)->with('filters', [
             'id' => $request->id,
             'title' => $request->title,
+        ])->with('blogs', $blogs)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+        ])->with('tours', $tours)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'location' => $request->location,
         ]);
     }
     public function getZipPage(Request $request){
         $slides = $this->getFilteredSlides($request);
+        $blogs = $this->getFilteredBlogs($request);
+        $zips = $this->getFilteredZips($request);
         return view('ziplines')->with('slides', $slides)->with('filters', [
             'id' => $request->id,
             'title' => $request->title,
+        ])->with('blogs', $blogs)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+        ])->with('zips', $zips)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'location' => $request->location,
         ]);
     }
     public function getTokebiPage(Request $request){
         $slides = $this->getFilteredSlides($request);
+        $blogs = $this->getFilteredBlogs($request);
         return view('tokebi')->with('slides', $slides)->with('filters', [
             'id' => $request->id,
             'title' => $request->title,
+        ])->with('blogs', $blogs)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
         ]);
     }
     public function getContactPage(Request $request){

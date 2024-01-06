@@ -59,6 +59,9 @@
                                     <a class="dropdown-item" href="{{ route('tours.all') }}">
                                         Edit Tours
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('uprojects.all') }}">
+                                        Edit Upcomig projects
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('tokebi.all') }}">
                                         Edit Tokebis park
                                     </a>

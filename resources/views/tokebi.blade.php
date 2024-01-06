@@ -52,21 +52,11 @@
             @endforeach
         </div>
         <div class="thumbnail">
+        @foreach($slides as $slide)
             <div class="item">
-                <img src="./assets/images/cimage2.jpg" alt="">
+                <img src="storage/slide/{{$slide->slideimage}}" alt="">
             </div>
-            <div class="item">
-                <img src="./assets/images/cimage3.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage4.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage5.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage1.jpg" alt="">
-            </div>
+        @endforeach
         </div>
         <div class="arrows">
             <button id="prev"><</button>
@@ -129,41 +119,34 @@
             </div>
         </div>
     </div>
-    <!-- Blog -->
+    <!-- Blogs -->
     <section class="blogSection">
         <div>
             <h1>Blog</h1>
             <hr>
         </div>
-
+        @foreach($blogs->take(1) as $blog)
         <div class="blog">
             <div class="mainC">
-                <h1>Flying over the Tbilisi Botanical Garden</h1>
-                <p>Flying over the Botanical Garden in Tbilisi is possible only 
-                    with the help of Zipin Georgia with us 🙏 💯 💪</p>
-                <img src="./assets/images/blog1.jpg" alt="">
-                
+                <h1>{{$blog->name}}</h1>
+                <p>{{$blog->description}}</p>
+                <img src="storage/blog/{{$blog->blogimage}}" alt="">  
             </div>
+        @endforeach
+        
             <div class="blogFlex">
+                @foreach($blogs->take(4)->skip(1) as $blog)
                 <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog2.jpg" alt="">
+                    <h1>{{$blog->name}}</h1>
+                    <p>{{$blog->description}}</p>
+                    <img src="storage/blog/{{$blog->blogimage}}" alt="">
                     
                 </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog3.jpg" alt="">
-                </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog4.jpg" alt="">
-                </div>
+                @endforeach
             </div>
-            
+        
         </div>
+
     </section>
     <!-- Footer -->
     <footer>

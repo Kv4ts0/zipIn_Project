@@ -72,12 +72,12 @@
                 <option value="{{ implode(['location' => 'Racha-Lechkhumi and Kvemo Svaneti']) }}">Racha-Lechkhumi and Kvemo Svaneti</option>
             </select>
             </td>
-            <td><input input class="form-control"  class="form-control" type="file" name="image1" placeholder="Main image"></td>
-            <td><input input class="form-control"  class="form-control" type="file" name="image2" placeholder="Second image"></td>
-            <td><input input class="form-control"  class="form-control" type="file" name="image3" placeholder="Third image"></td>
-            <td><input input class="form-control"  class="form-control" type="file" name="image4" placeholder="Fourth image"></td>
-            <td><input input class="form-control"  type="number" name="price" placeholder="Price"></td>
-            <td><input input class="form-control"  type="text" name="description" placeholder="Tour Description"></td>
+            <td><input input class="form-control" type="file" name="image1" placeholder="Main image"></td>
+            <td><input input class="form-control" type="file" name="image2" placeholder="Second image"></td>
+            <td><input input class="form-control" type="file" name="image3" placeholder="Third image"></td>
+            <td><input input class="form-control" type="file" name="image4" placeholder="Fourth image"></td>
+            <td width='100px'><input  class="form-control"  type="number" name="price" placeholder="Price"></td>
+            <td><textarea class="form-control"  type="text" name="description"> </textarea></td>
             <td><button class="btn btn-success" type="submit">Add</button></td>
             <td>#</td>
         </tr>
@@ -91,7 +91,7 @@
             <td><img width=100px height="100px" src="/storage/tour/{{$tour->image3}}" alt=""></td>
             <td><img width=100px height="100px" src="/storage/tour/{{$tour->image4}}" alt=""></td>
             <td>{{ $tour->price }}</td>
-            <td>{{ $tour->description }}</td>
+            <td><pre style="width: 600px">{{ $tour->description }}</pre></td>
             <td>
                 <form action="{{ route('tours.delete') }}" method="POST">
                 @csrf

@@ -52,21 +52,11 @@
             @endforeach
         </div>
         <div class="thumbnail">
+        @foreach($slides as $slide)
             <div class="item">
-                <img src="./assets/images/cimage2.jpg" alt="">
+                <img src="storage/slide/{{$slide->slideimage}}" alt="">
             </div>
-            <div class="item">
-                <img src="./assets/images/cimage3.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage4.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage5.jpg" alt="">
-            </div>
-            <div class="item">
-                <img src="./assets/images/cimage1.jpg" alt="">
-            </div>
+        @endforeach
         </div>
         <div class="arrows">
             <button id="prev"><</button>
@@ -77,93 +67,67 @@
     <!-- Project section -->
     <div class="tourTable">
         <h1>Tours</h1>
+        <form action="{{ route('tourebi.all') }}">
+        @csrf
         <div class="filter">
-            <input type="text" placeholder="Search" />
+            <input type="text" name="name" placeholder="Search" />
             <select name="location" id="location">
-                <option value="" disabled="" selected="" hidden="">Location</option>
-                <option value="Tbilisi">Tbilisi</option>
-                <option value="Batumi">Batumi</option>
-                <option value="Mtskheta">Mtskheta</option>
-                <option value="Gori">Gori</option>
-                <option value="Kutaisi">Kutaisi</option>
-                <option value="Ozurgeti">Ozurgeti</option>
-                <option value="Martvili">Martvili</option>
+            <option value="" disabled selected hidden>Location</option>
+                <option value="{{ implode(['location' => 'Tbilisi']) }}">Tbilisi</option>
+                <option value="{{ implode(['location' => 'Imereti']) }}">Imereti</option>
+                <option value="{{ implode(['location' => 'Adjaria']) }}">Adjaria</option>
+                <option value="{{ implode(['location' => 'Kvemo Kartli']) }}">Kvemo Kartli</option>
+                <option value="{{ implode(['location' => 'Samegrelo / Svaneti']) }}">Samegrelo / Svaneti</option>
+                <option value="{{ implode(['location' => 'Kakheti']) }}">Kakheti</option>
+                <option value="{{ implode(['location' => 'Shida Kartli']) }}">Shida Kartli</option>
+                <option value="{{ implode(['location' => 'Abkhazia']) }}">Abkhazia</option>
+                <option value="{{ implode(['location' => 'Samtskhe-Javakheti']) }}">Samtskhe-Javakheti</option>
+                <option value="{{ implode(['location' => 'Guria']) }}">Guria</option>
+                <option value="{{ implode(['location' => 'Mtskheta-Mtianeti']) }}">Mtskheta-Mtianeti</option>
+                <option value="{{ implode(['location' => 'Racha-Lechkhumi and Kvemo Svaneti']) }}">Racha-Lechkhumi and Kvemo Svaneti</option>
             </select>
-            <select name="day" id="day">
-                <option value="" disabled="" selected="" hidden="">Day</option>
-                <option value="1 Day">1 Day</option>
-                <option value="2 Day">2 Day</option>
-                <option value="3 Day">3 Day</option>
-                <option value="4 Day">4 Day</option>
-                <option value="5 Day">5 Day</option>
-                <option value="1 Week">1 Week</option>
-            </select>
-            <input type="number" placeholder="Min price" />
-            <input type="number" placeholder="Max price" />
+            <input type="number" name="min_price" placeholder="Min price" />
+            <input type="number" name="max_price" placeholder="Max price" />
             <button><i class="fa-solid fa-filter"></i> Filter</button>
         </div>
+        </form>
         <div class="tours">
+            @foreach($tours as $tour)
             <div class="cardT">
-                <div><p>Tour#1</p></div>
-                <img src="./assets/images/zip1.jpg" alt="Tours">
+                <div><p>{{ $tour->name }}</p></div>
+                <img src="storage/tour/{{$tour->image1}}" alt="Tours">
             </div>
-            <div class="cardT">
-                <div><p>Tour#2</p></div>
-                <img src="./assets/images/zip2.jpg"  alt="Tours">
-            </div>
-            <div class="cardT">
-                <div><p>Tour#3</p></div>
-                <img src="./assets/images/zip3.jpg"  alt="Tours">
-            </div>
-            <div class="cardT">
-                <div><p>Tour#4</p></div>
-                <img src="./assets/images/zip1.jpg" alt="Tours">
-            </div>
-            <div class="cardT">
-                <div><p>Tour#5</p></div>
-                <img src="./assets/images/zip2.jpg"  alt="Tours">
-            </div>
-            <div class="cardT">
-                <div><p>Tour#6</p></div>
-                <img src="./assets/images/zip3.jpg"  alt="Tours">
-            </div>
+            @endforeach
         </div>
     </div>
-    <!-- Blog -->
+    <!-- Blogs -->
     <section class="blogSection">
         <div>
             <h1>Blog</h1>
             <hr>
         </div>
-
+        @foreach($blogs->take(1) as $blog)
         <div class="blog">
             <div class="mainC">
-                <h1>Flying over the Tbilisi Botanical Garden</h1>
-                <p>Flying over the Botanical Garden in Tbilisi is possible only 
-                    with the help of Zipin Georgia with us 🙏 💯 💪</p>
-                <img src="./assets/images/blog1.jpg" alt="">
-                
+                <h1>{{$blog->name}}</h1>
+                <p>{{$blog->description}}</p>
+                <img src="storage/blog/{{$blog->blogimage}}" alt="">  
             </div>
+        @endforeach
+        
             <div class="blogFlex">
+                @foreach($blogs->take(4)->skip(1) as $blog)
                 <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog2.jpg" alt="">
+                    <h1>{{$blog->name}}</h1>
+                    <p>{{$blog->description}}</p>
+                    <img src="storage/blog/{{$blog->blogimage}}" alt="">
                     
                 </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog3.jpg" alt="">
-                </div>
-                <div>
-                    <h1>Tours in Georgia</h1>
-                    <p>Follow our news and follow us on tours where you ...</p>
-                    <img src="./assets/images/blog4.jpg" alt="">
-                </div>
+                @endforeach
             </div>
-            
+        
         </div>
+
     </section>
     <!-- Footer -->
     <footer>

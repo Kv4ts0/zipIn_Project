@@ -76,8 +76,8 @@
             <td><input input class="form-control"  class="form-control" type="file" name="image2" placeholder="Second image"></td>
             <td><input input class="form-control"  class="form-control" type="file" name="image3" placeholder="Third image"></td>
             <td><input input class="form-control"  class="form-control" type="file" name="image4" placeholder="Fourth image"></td>
-            <td><input input class="form-control"  type="number" name="price" placeholder="Price"></td>
-            <td><input input class="form-control"  type="text" name="description" placeholder="Zip Description"></td>
+            <td style="width:100px;"><input input class="form-control"  type="number" name="price" placeholder="Price"></td>
+            <td><textarea class="form-control"  type="text" name="description" placeholder="Zip Description"></textarea></td>
             <td><button class="btn btn-success" type="submit">Add</button></td>
             <td>#</td>
         </tr>
@@ -90,8 +90,8 @@
             <td><img width=100px height="100px" src="/storage/zip/{{$zip->image2}}" alt=""></td>
             <td><img width=100px height="100px" src="/storage/zip/{{$zip->image3}}" alt=""></td>
             <td><img width=100px height="100px" src="/storage/zip/{{$zip->image4}}" alt=""></td>
-            <td>{{ $zip->price }}</td>
-            <td>{{ $zip->description }}</td>
+            <td>{{ $zip->price }} ₾</td>
+            <td><pre style="width: 600px">{{ $zip->description }}</pre></td>
             <td>
                 <form action="{{ route('zips.delete') }}" method="POST">
                 @csrf
