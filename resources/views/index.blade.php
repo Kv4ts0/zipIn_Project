@@ -65,16 +65,161 @@
         </div>
         <div class="time"></div>
     </div>
-<!-- Map -->
+    <!-- Modal Box -->
+    <div class="batumi">
+            @foreach($zips as $zip)
+            @if(strpos($zip->name, 'Batumi') !== false)
+            <div class="modal">
+                <h1>{{$zip->name}}</h1>
+                <hr>
+                <h2>Location: {{$zip->location}} </h2>
+                <hr>
+                <h2>Price: {{$zip->price}} </h2>
+                <hr>
+                <div>
+                    <img src="storage/zip/{{$zip->image1}}" alt="">
+                    <img src="storage/zip/{{$zip->image2}}" alt="">
+                    <img src="storage/zip/{{$zip->image3}}" alt="">
+                </div>
+                <pre>{{$zip->description}}</pre>
+                <button class="closeba">
+                    X
+                </button>
+            </div>
+            @endif
+            @endforeach
+    </div>
+    <div class="makhuntseti">
+            @foreach($zips as $zip)
+            @if(strpos($zip->name, 'Makhuntseti') !== false)
+            <div class="modal">
+                <h1>{{$zip->name}}</h1>
+                <hr>
+                <h2>Location: {{$zip->location}} </h2>
+                <hr>
+                <h2>Price: {{$zip->price}} </h2>
+                <hr>
+                <div>
+                    <img src="storage/zip/{{$zip->image1}}" alt="">
+                    <img src="storage/zip/{{$zip->image2}}" alt="">
+                    <img src="storage/zip/{{$zip->image3}}" alt="">
+                </div>
+                <pre>{{$zip->description}}</pre>
+                <button class="closemak">
+                    X
+                </button>
+            </div>
+            @endif
+            @endforeach
+    </div>
+    <div class="martvili">
+            @foreach($zips as $zip)
+            @if(strpos($zip->name, 'Kinchkha') !== false)
+            <div class="modal">
+                <h1>{{$zip->name}}</h1>
+                <hr>
+                <h2>Location: {{$zip->location}} </h2>
+                <hr>
+                <h2>Price: {{$zip->price}} </h2>
+                <hr>
+                <div>
+                    <img src="storage/zip/{{$zip->image1}}" alt="">
+                    <img src="storage/zip/{{$zip->image2}}" alt="">
+                    <img src="storage/zip/{{$zip->image3}}" alt="">
+                </div>
+                <pre>{{$zip->description}}</pre>
+                <button class="closemar">
+                    X
+                </button>
+            </div>
+            @endif
+            @endforeach
+    </div>
+    <div class="tbilisi">
+            @foreach($zips as $zip)
+            @if(strpos($zip->name, 'Turtle') !== false)
+            <div class="modal">
+                <h1>{{$zip->name}}</h1>
+                <hr>
+                <h2>Location: {{$zip->location}} </h2>
+                <hr>
+                <h2>Price: {{$zip->price}} </h2>
+                <hr>
+                <div>
+                    <img src="storage/zip/{{$zip->image1}}" alt="">
+                    <img src="storage/zip/{{$zip->image2}}" alt="">
+                    <img src="storage/zip/{{$zip->image3}}" alt="">
+                </div>
+                <pre>{{$zip->description}}</pre>
+                <button class="closetb">
+                    X
+                </button>
+            </div>
+            @endif
+            @endforeach
+    </div>
+    <div class="signagi">
+            @foreach($zips as $zip)
+            @if(strpos($zip->name, 'Sighnaghi') !== false)
+            <div class="modal">
+                <h1>{{$zip->name}}</h1>
+                <hr>
+                <h2>Location: {{$zip->location}} </h2>
+                <hr>
+                <h2>Price: {{$zip->price}} </h2>
+                <hr>
+                <div>
+                    <img src="storage/zip/{{$zip->image1}}" alt="">
+                    <img src="storage/zip/{{$zip->image2}}" alt="">
+                    <img src="storage/zip/{{$zip->image3}}" alt="">
+                </div>
+                <pre>{{$zip->description}}</pre>
+                <button class="closesig">
+                    X
+                </button>
+            </div>
+            @endif
+            @endforeach
+    </div>
+    <div class="sairme">
+            @foreach($zips as $zip)
+            @if(strpos($zip->name, 'Sairme') !== false)
+            <div class="modal">
+                <h1>{{$zip->name}}</h1>
+                <hr>
+                <h2>Location: {{$zip->location}} </h2>
+                <hr>
+                <h2>Price: {{$zip->price}} </h2>
+                <hr>
+                <div>
+                    <img src="storage/zip/{{$zip->image1}}" alt="">
+                    <img src="storage/zip/{{$zip->image2}}" alt="">
+                    <img src="storage/zip/{{$zip->image3}}" alt="">
+                </div>
+                <pre>{{$zip->description}}</pre>
+                <button class="closesa">
+                    X
+                </button>
+            </div>
+            @endif
+            @endforeach
+    </div>
+    <!-- End Modal Box -->
     <div class="map">
         <h1>Find your adventure group</h1>
         <hr>
-        <i class="fa-solid fa-location-pin batumi"></i>
-        <i class="fa-solid fa-location-pin martvili"></i>
-        <i class="fa-solid fa-location-pin tbilisi"></i>
-        <i class="fa-solid fa-location-pin sairme"></i>
+        <i class="fa-solid fa-location-pin batumib"></i>
+        <i class="fa-solid fa-location-pin makhuntsetib"></i>
+        <i class="fa-solid fa-location-pin martvilib"></i>
+        <i class="fa-solid fa-location-pin tbilisib"></i>
+        <i class="fa-solid fa-location-pin signagib"></i>
+        <i class="fa-solid fa-location-pin sairmeb"></i>
         <img src="./assets/images/map.svg" alt="">
+
+
     </div>
+    <!-- Modal -->
+
 <!-- Partners -->
     <section>
         <h1>Partners</h1>
@@ -110,7 +255,9 @@
         @foreach($blogs->take(1) as $blog)
         <div class="blog">
             <div class="mainC">
-                <h1>{{$blog->name}}</h1>
+                <a href="{{ route('blog',['id' => $blog->id]) }}">
+                    <h1>{{$blog->name}}</h1>
+                </a>
                 <p>{{$blog->description}}</p>
                 <img src="storage/blog/{{$blog->blogimage}}" alt="">  
             </div>
@@ -119,7 +266,9 @@
             <div class="blogFlex">
                 @foreach($blogs->take(4)->skip(1) as $blog)
                 <div>
-                    <h1>{{$blog->name}}</h1>
+                    <a href="{{ route('blog',['id' => $blog->id]) }}">
+                        <h1>{{$blog->name}}</h1>
+                    </a>
                     <p>{{$blog->description}}</p>
                     <img src="storage/blog/{{$blog->blogimage}}" alt="">
                     

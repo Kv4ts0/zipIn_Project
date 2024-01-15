@@ -58,3 +58,37 @@ function show(){
 function close(){
     mainMenu.style.display = 'none';
 }
+
+
+function addShowHideListener(triggerClass, targetClass, closeClass) {
+    const triggers = document.querySelectorAll(`.${triggerClass}`);
+    const targets = document.querySelectorAll(`.${targetClass}`);
+    
+    triggers.forEach((trigger, index) => {
+        trigger.addEventListener('click', () => {
+            targets[index].classList.add('show');
+        });
+    });
+
+    const closeButtons = document.querySelectorAll(`.${closeClass}`);
+    closeButtons.forEach((closeButton, index) => {
+        closeButton.addEventListener('click', () => {
+            targets[index].classList.remove('show');
+        });
+    });
+}
+
+// Update your class names if needed
+const locations = [
+    { trigger: 'tbilisib', target: 'tbilisi', close: 'closetb' },
+    { trigger: 'sairmeb', target: 'sairme', close: 'closesa' },
+    { trigger: 'batumib', target: 'batumi', close: 'closeba' },
+    { trigger: 'signagib', target: 'signagi', close: 'closesig' },
+    { trigger: 'makhuntsetib', target: 'makhuntseti', close: 'closemak' },
+    { trigger: 'martvilib', target: 'martvili', close: 'closemar' },
+];
+
+locations.forEach(location => {
+    addShowHideListener(location.trigger, location.target, location.close);
+});
+

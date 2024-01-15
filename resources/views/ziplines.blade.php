@@ -94,7 +94,9 @@
         <div class="tours">
             @foreach($zips as $zip)
             <div class="cardT">
-                <div><p>{{$zip->name}}</p></div>
+                <a href="{{ route('zip',['id' => $zip->id]) }}">
+                    <div><p>{{$zip->name}}</p></div>
+                </a>
                 <img src="storage/zip/{{$zip->image1}}" alt="Ziplines picture">
             </div>
             @endforeach
@@ -109,7 +111,9 @@
         @foreach($blogs->take(1) as $blog)
         <div class="blog">
             <div class="mainC">
+            <a href="{{ route('blog',['id' => $blog->id]) }}">
                 <h1>{{$blog->name}}</h1>
+            </a>
                 <p>{{$blog->description}}</p>
                 <img src="storage/blog/{{$blog->blogimage}}" alt="">  
             </div>
@@ -118,7 +122,9 @@
             <div class="blogFlex">
                 @foreach($blogs->take(4)->skip(1) as $blog)
                 <div>
+                <a href="{{ route('blog',['id' => $blog->id]) }}">
                     <h1>{{$blog->name}}</h1>
+                </a>
                     <p>{{$blog->description}}</p>
                     <img src="storage/blog/{{$blog->blogimage}}" alt="">
                     

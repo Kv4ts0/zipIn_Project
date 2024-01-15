@@ -13,6 +13,7 @@ use App\Models\Uproject;
 
 class zipController extends Controller
 {
+
     public function getFilteredStats(Request $request){
         $stats = Stat::orderBy('created_at', 'DESC');
         if($request->id != null){
@@ -439,6 +440,7 @@ class zipController extends Controller
         $slides = $this->getFilteredSlides($request);
         $blogs = $this->getFilteredBlogs($request);
         $stats = $this->getFilteredStats($request);
+        $zips = $this->getFilteredZips($request);
         return view('index')->with('slides', $slides)->with('filters', [
             'id' => $request->id,
             'title' => $request->title,
@@ -449,8 +451,15 @@ class zipController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'number' => $request->number,
+        ])->with('zips', $zips)->with('filters', [
+            'id' => $request->id,
+            'name' => $request->name,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'location' => $request->location,
         ]);
     }
+
     public function getProjectsPage(Request $request){
         $zips = $this->getFilteredZips($request);
         $uprojects = $this->getFilteredUprojects($request);
@@ -617,5 +626,20 @@ class zipController extends Controller
     public function deleteZip(Request $request){
         Zip::where('id', $request->zip_id)->delete();
         return redirect()->route('zips.all');
+    }
+    public function getTourPage(Request $request, $id){
+        $slides = Slide::orderBy('created_at', 'DESC')->get();
+        $tour = Tour::where('id', $id)->first();
+        return view('tour')->with('tour', $tour)->with('slides', $slides);
+    }
+    public function getZiplinePage(Request $request, $id){
+        $slides = Slide::orderBy('created_at', 'DESC')->get();
+        $zip = Zip::where('id', $id)->first();
+        return view('zipline')->with('zip', $zip)->with('slides', $slides);
+    }
+    public function getBlogPage(Request $request, $id){
+        $slides = Slide::orderBy('created_at', 'DESC')->get();
+        $blog = Blog::where('id', $id)->first();
+        return view('blog')->with('blog', $blog)->with('slides', $slides);
     }
 }

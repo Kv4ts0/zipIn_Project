@@ -9,6 +9,9 @@ use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+Route::get('/blogs/{id}', "App\Http\Controllers\zipController@getBlogPage")->name('blog');
+Route::get('/zipline/{id}', "App\Http\Controllers\zipController@getZiplinePage")->name('zip');
+Route::get('/tour/{id}', "App\Http\Controllers\zipController@getTourPage")->name('tour');
 Route::get('/', "App\Http\Controllers\zipController@getHomePage");
 Route::get('/index', "App\Http\Controllers\zipController@getHomePage");
 Route::get('/projects', "App\Http\Controllers\zipController@getProjectsPage");
@@ -32,7 +35,7 @@ Route::middleware('custom-auth')->get('/uproject/edit/{id}', "App\Http\Controlle
 Route::middleware('custom-auth')->post('/uproject/update/{id}', "App\Http\Controllers\zipController@updateUproject")->name('uprojects.update');
 
 //Tour routes
-Route::middleware('custom-auth')->get('/tour/all', 'App\Http\Controllers\zipController@viewAllTour')->name('tours.all');
+Route::middleware('custom-auth')->get('/tours/all', 'App\Http\Controllers\zipController@viewAllTour')->name('tours.all');
 Route::middleware('custom-auth')->post('/tour/add', 'App\Http\Controllers\zipController@addNewTour')->name('tours.add');
 Route::middleware('custom-auth')->post('/tour/delete', 'App\Http\Controllers\zipController@deleteTour')->name('tours.delete');
 Route::middleware('custom-auth')->get('/tour/edit/{id}', 'App\Http\Controllers\zipController@editTour')->name('tours.edit');

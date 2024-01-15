@@ -565,17 +565,29 @@ select:focus{
 .map i:hover{
     color:#76FFA8;
 }
-.map .batumi{
+.map .batumib{
     margin-top: 16rem;
-    margin-right: 23rem;
+    margin-right: 26rem;
 }
-.map .martvili{
+.map .makhuntsetib{
+    margin-top: 22rem;
+    margin-right: 20rem;
+}
+.map .sairmeb{
+    margin-top: 14rem;
+    margin-right: 10rem;
+}
+.map .signagib{
+    margin-top: 16rem;
+    margin-left: 37rem;
+}
+.map .martvilib{
     margin-top: 4rem;
     margin-right: 14rem;
 }
-.map .tbilisi{
-    margin-top: 16rem;
-    margin-left: 28rem;
+.map .tbilisib{
+    margin-top: 19rem;
+    margin-left: 25rem;
 }
 section{
     color: black;
@@ -827,6 +839,132 @@ footer ul li a:hover{
 .contact .contactCard .form input::placeholder, .contact .contactCard .form textarea::placeholder{
     color: white;
 }
+
+.tourReview{
+    font-size: 1rem;
+    padding: 10rem 0;
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    background-color: white;
+}
+.tourReview .tourMain{
+    font-size: 1rem;
+    color: black;
+    gap: 7rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.tourReview .tourDescription{
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    color: black;
+    display: flex;
+}
+.tourReview .tourDescription pre{
+    max-width: 780px;
+    min-width: 780px;
+    margin-right: 20rem;
+}
+.tourReview .tourMain > div{
+    width: 500px;
+    height: 400px;
+}
+.tourReview .tourMain > div img{
+    width: 100%;
+    height: 100%;
+}
+.tourReview .tourMain section{
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.tourReview .tourMain section hr{
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.tourReview .tourMain .adImages{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.tourReview .tourMain .adImages div{
+    width: 120px;
+    height: 120px;
+}
+.tourReview .tourMain .adImages img{
+    width: 100%;
+    height: 100%;
+}
+.tourReview .tourMain div{
+    display: flex;
+    flex-direction: column;
+}
+.tourReview .tourMain .blogDesc pre{
+    white-space: pre-wrap;
+}
+.batumi, .makhuntseti, .martvili,  .tbilisi, .signagi, .sairme{
+    z-index: 200;
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    pointer-events: none;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.61)),
+    url('../assets/images/cimage2.jpg');
+    object-fit: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.batumi.show, .makhuntseti.show, .tbilisi.show, .signagi.show, .sairme.show, .martvili.show{
+    pointer-events: auto;
+    opacity: 1;
+}
+.modal{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 1250px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 5px;
+    text-align: center;
+}
+.modal hr{
+    width: 100px;
+}
+.modal div{
+    display: flex;
+    gap: 2rem;
+    width: 900px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 50px;
+}
+.modal div img{
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+.modal h1{
+    margin: 0;
+}
+.modal p{
+    font-size: 16px;
+}
 @media only screen and (max-width: 2000px) and (min-width: 1400px){
     .carousel .list .item .content{
         width: 1700px;
@@ -912,20 +1050,28 @@ footer ul li a:hover{
     .map img{
         width: 40rem;
     }
-    .map .batumi {
-        margin-top: 12rem;
-        margin-right: 14rem;
+    .map .batumib {
+        margin-top: 13rem;
+        margin-right: 18rem;
     }
-    .map .martvili {
-        margin-top: 4rem;
+    .map .martvilib {
+        margin-top: 10rem;
         margin-right: 7rem;
     }
-    .map .sairme {
-        margin-top: 2rem;
+    .map .sairmeb {
+        margin-top: 4rem;
     }
-    .map .tbilisi {
-        margin-top: 13rem;
+    .map .tbilisib {
+        margin-top: 15rem;
         margin-left: 16rem;
+    }
+    .map .signagib{
+        margin-top: 13rem;
+        margin-left: 26rem;
+    }
+    .map .makhuntsetib{
+        margin-top: 16rem;
+        margin-right: 14rem;
     }
     .mainMenu{
         height: 23rem;
@@ -1042,20 +1188,28 @@ footer ul li a:hover{
         margin-top: 1rem;
         width: 30rem;
     }
-    .map .batumi {
+    .map .batumib {
         margin-top: 13rem;
         margin-right: 10rem;
     }
-    .map .martvili {
+    .map .makhuntsetib{
+        margin-top: 12rem;
+        margin-right: 13rem;
+    }
+    .map .martvilib {
+        margin-top: 10rem;
+        margin-right: 6rem;
+    }
+    .map .sairmeb {
         margin-top: 6rem;
-        margin-right: 7rem;
     }
-    .map .sairme {
-        margin-top: 4rem;
-    }
-    .map .tbilisi {
+    .map .tbilisib {
         margin-top: 13rem;
         margin-left: 13rem;
+    }
+    .map .signagib{
+        margin-top: 13rem;
+        margin-left: 20rem;
     }
     .partners{
         gap: 60px;
@@ -1142,23 +1296,35 @@ footer ul li a:hover{
     .upcomingC div{
         width: 330px;
     }
+    .map i{
+        font-size: 13px;
+    }
     .map img{
         width: 20rem;
     }
-    .map .batumi {
-        margin-top: 10rem;
-        margin-right: 7rem;
+    .map .batumib {
+        margin-top: 9rem;
+        margin-right: 8rem;
     }
-    .map .martvili {
+    .map .martvilib {
+        margin-top: 7rem;
+        margin-right: 3rem;
+    }
+    .map .sairmeb {
+        margin-left: 5rem;
         margin-top: 5rem;
-        margin-right: 5rem;
     }
-    .map .sairme {
-        margin-top: 5rem;
-    }
-    .map .tbilisi {
+    .map .tbilisib {
         margin-top: 10rem;
-        margin-left: 10rem;
+        margin-left: 8rem;
+    }
+    .map .makhuntsetib{
+        margin-top: 10rem;
+        margin-right: 6rem;
+    }
+    .map .signagib{
+        margin-top: 9rem;
+        margin-left: 12rem;
     }
     section h1, .map h1{
         font-size: 1.5rem;
